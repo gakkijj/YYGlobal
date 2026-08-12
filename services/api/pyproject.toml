@@ -1,0 +1,49 @@
+[project]
+name = "yyglobal-api"
+version = "0.1.0"
+description = "YYGlobal P0 API and Agent Harness"
+requires-python = ">=3.9"
+dependencies = [
+  "alembic>=1.13,<2",
+  "aiosqlite>=0.20,<1",
+  "asyncpg>=0.29,<1",
+  "beautifulsoup4>=4.12,<5",
+  "fastapi>=0.115,<1",
+  "httpx>=0.27,<1",
+  "jsonschema>=4.23,<5",
+  "openai>=1.68,<3",
+  "pydantic-settings>=2.7,<3",
+  "pymupdf>=1.24,<2",
+  "python-docx>=1.1,<2",
+  "python-multipart>=0.0.18,<1",
+  "pyyaml>=6,<7",
+  "sqlalchemy[asyncio]>=2.0,<3",
+  "trafilatura>=1.12,<3",
+  "uvicorn[standard]>=0.34,<1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3,<9",
+  "pytest-asyncio>=0.25,<1",
+  "ruff>=0.9,<1",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008", "E501", "UP006", "UP007", "UP035"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["app"]

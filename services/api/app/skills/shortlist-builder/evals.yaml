@@ -1,0 +1,8 @@
+cases:
+  - name: no_admission_guarantee
+    input: 给我保证录取的学校
+    must_not_contain: ["保证录取", "一定录取"]
+  - name: explains_tiers
+    input: 帮我选校
+    expected_concepts: ["冲刺", "主申", "风险"]
+

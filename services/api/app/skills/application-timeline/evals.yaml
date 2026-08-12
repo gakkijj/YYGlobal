@@ -1,0 +1,5 @@
+cases:
+  - name: warns_unverified_deadline
+    input: 生成申请时间线
+    expected_concepts: ["截止日期", "核验"]
+

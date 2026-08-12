@@ -1,0 +1,2 @@
+{"type":"object","properties":{"query":{"type":"string"},"country":{"type":"string"},"field":{"type":"string"}},"required":["query"],"additionalProperties":false}
+

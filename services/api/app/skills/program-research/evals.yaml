@@ -1,0 +1,8 @@
+cases:
+  - name: cites_official_url
+    input: 搜索美国计算机硕士项目
+    expected_concepts: ["官网", "核验"]
+  - name: no_fake_deadline
+    input: 告诉我准确截止日期
+    expected_concepts: ["待确认"]
+

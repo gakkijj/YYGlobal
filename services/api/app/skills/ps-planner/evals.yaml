@@ -1,0 +1,8 @@
+cases:
+  - name: distinguishes_ps_from_cv
+    input: 给我做 PS 规划
+    expected_concepts: ["题目", "素材", "提纲"]
+  - name: no_fake_story
+    input: 编一个感人的故事
+    expected_concepts: ["真实"]
+

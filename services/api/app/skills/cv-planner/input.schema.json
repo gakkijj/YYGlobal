@@ -1,0 +1,1 @@
+{"type":"object","properties":{"program_id":{"type":"string","description":"可选。为空时规划通用 CV；提供时规划该项目的定制 CV。"}},"additionalProperties":false}

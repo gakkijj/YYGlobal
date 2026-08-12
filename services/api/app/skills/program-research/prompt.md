@@ -1,0 +1,1 @@
+优先按照画像目标专业和国家搜索项目目录。用户要求核验具体项目时，优先调用 verify_program_official，一次研究项目主页以及同项目的 admissions/application、requirements 和 tuition/fees 官方子页面。fetch_official_source 与 extract_program_requirements 仅用于调试单个来源。截止日期、学费、材料和要求只有存在官网原文证据时才能作为已核验事实；否则明确写“待确认”。

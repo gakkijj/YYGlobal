@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --background: #f7f5ef;
+  --foreground: #17211b;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at 10% 0%, rgba(206, 232, 216, 0.65), transparent 34rem),
+    radial-gradient(circle at 90% 10%, rgba(245, 218, 180, 0.38), transparent 30rem),
+    var(--background);
+  font-family: Arial, Helvetica, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+button, input, select, textarea { font: inherit; }
+button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible {
+  outline: 3px solid rgba(47, 107, 79, 0.3);
+  outline-offset: 2px;
+}
+
+@layer components {
+  .field {
+    @apply w-full rounded-xl border border-black/10 bg-white/80 px-3 py-2.5 text-sm text-ink shadow-sm transition focus:border-moss focus:outline-none;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.12em] text-ink/55;
+  }
+  .eyebrow {
+    @apply text-xs font-bold uppercase tracking-[0.18em] text-moss;
+  }
+}
+

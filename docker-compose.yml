@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: yyglobal
+      POSTGRES_USER: yyglobal
+      POSTGRES_PASSWORD: yyglobal
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U yyglobal -d yyglobal"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+    environment:
+      APP_ENV: production
+      AUTH_ENABLED: "false"
+      LOCAL_OWNER_ID: local-admin
+      DATABASE_URL: postgresql+asyncpg://yyglobal:yyglobal@db:5432/yyglobal
+      UPLOAD_DIR: /data/uploads
+      LLM_PROVIDER: ${LLM_PROVIDER:-auto}
+      DASHSCOPE_API_KEY: ${DASHSCOPE_API_KEY:-}
+      DASHSCOPE_BASE_URL: ${DASHSCOPE_BASE_URL:-https://dashscope.aliyuncs.com/compatible-mode/v1}
+      DASHSCOPE_REASONING_MODEL: ${DASHSCOPE_REASONING_MODEL:-qwen-plus}
+      DASHSCOPE_EXTRACTION_MODEL: ${DASHSCOPE_EXTRACTION_MODEL:-qwen-vl-plus}
+      LLM_REQUEST_TIMEOUT_SECONDS: ${LLM_REQUEST_TIMEOUT_SECONDS:-60}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      LLM_REASONING_MODEL: ${LLM_REASONING_MODEL:-gpt-5.6-terra}
+      LLM_EXTRACTION_MODEL: ${LLM_EXTRACTION_MODEL:-gpt-5.6-luna}
+      CORS_ORIGINS_CSV: http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - uploads:/data/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000/api
+    environment:
+      PORT: 3000
+      HOSTNAME: 0.0.0.0
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+  uploads:

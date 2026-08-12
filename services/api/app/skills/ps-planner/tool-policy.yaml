@@ -1,0 +1,7 @@
+tools:
+  - get_applicant_profile
+  - parse_applicant_document
+  - compare_programs
+  - build_material_plan
+approval_required:
+  - build_material_plan

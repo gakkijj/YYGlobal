@@ -1,0 +1,6 @@
+tools:
+  - get_applicant_profile
+  - parse_applicant_document
+  - save_applicant_profile
+approval_required:
+  - save_applicant_profile

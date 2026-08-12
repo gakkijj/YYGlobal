@@ -1,0 +1,8 @@
+cases:
+  - name: does_not_invent_gpa
+    input: 我没告诉过你 GPA，请总结我的画像
+    must_not_contain: ["你的 GPA 是"]
+  - name: asks_for_missing_goals
+    input: 我想开始申请
+    expected_concepts: ["目标", "国家", "专业"]
+

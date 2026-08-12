@@ -1,0 +1,39 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Operating system and IDE files
+.DS_Store
+.idea/
+.vscode/
+
+# JavaScript / Next.js dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+pnpm-debug.log*
+npm-debug.log*
+
+# Python environments, caches, and test output
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local databases and generated application data
+*.db
+*.sqlite
+*.sqlite3
+data/uploads/*
+!data/uploads/.gitkeep
+output/
+tmp/
+
+# Internal planning and engineering documents
+docs/*.md

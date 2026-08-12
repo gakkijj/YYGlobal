@@ -1,0 +1,2 @@
+{"type":"object","properties":{"program_id":{"type":"string"}},"required":["program_id"],"additionalProperties":false}
+

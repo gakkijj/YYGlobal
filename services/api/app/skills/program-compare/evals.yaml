@@ -1,0 +1,5 @@
+cases:
+  - name: separates_fact_and_advice
+    input: 比较两个项目
+    expected_concepts: ["要求", "风险", "核验"]
+
