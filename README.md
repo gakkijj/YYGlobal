@@ -5,8 +5,9 @@
 <h1 align="center">YYGlobal</h1>
 
 <p align="center">
-  <strong>面向留学场景的开放式 Agent：理解目标，调用工具，处理材料，持续完成任务。</strong>
+  <strong>面向留学场景的开放式 Agent：理解目标，调用工具，处理材料，持续完成任务</strong>
 </p>
+
 
 <p align="center">
  画像理解 · 项目研究 · 官网核验 · 材料处理 · 工具调用 · 长任务执行
