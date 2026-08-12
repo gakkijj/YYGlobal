@@ -18,7 +18,7 @@ from typing import Any
 
 VALID_STATUSES = {"started", "success", "error", "denied", "cancelled"}
 TERMINAL_EVENT_TYPES = {"agent_end", "run_completed"}
-TERMINAL_STATUSES = {"success", "error", "cancelled"}
+TERMINAL_STATUSES = {"success", "error", "denied", "cancelled"}
 REQUIRED_FIELDS = ("trace_id", "step_id", "event_type", "status")
 
 
@@ -139,7 +139,7 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         event_count, trace_count, errors, warnings = validate_file(args.trace_file)
-    except OSError as error:
+    except (OSError, UnicodeError) as error:
         print(f"[ERROR] cannot read {args.trace_file}: {error}", file=sys.stderr)
         return 2
 
