@@ -17,3 +17,22 @@ python Core-Agent/check_pr_scope.py --base upstream/main
 ```bash
 python -m unittest discover -s Core-Agent -p "test_*.py"
 ```
+
+## Application material checklist
+
+Use the default checklist for common application materials:
+
+```bash
+python Core-Agent/material_checklist.py cv transcript
+```
+
+The checklist is not fixed. Programs that require a portfolio, writing sample,
+GRE, or other materials can provide their own comma-separated lists:
+
+```bash
+python Core-Agent/material_checklist.py \
+  --required "cv,transcript,portfolio" \
+  --prepared "cv,portfolio"
+```
+
+Add `--json` when the result needs to be consumed by another tool.
