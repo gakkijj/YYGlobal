@@ -47,8 +47,22 @@ Exit codes are `0` for valid arguments, `1` for schema violations, and `2` for
 an invalid schema or unreadable JSON input. Python callers can import
 `validate_tool_arguments` for structured issues or
 `require_valid_tool_arguments` for an exception-based gate.
-=======
-=======
+
+## Agent trace validation
+
+`agent_trace_validator.py` checks a compact, framework-agnostic JSONL event
+contract. It validates required fields, statuses, durations, step relationships,
+and event ordering within each trace. Regular UTF-8 and UTF-8 files with a byte
+order mark (BOM) are supported.
+
+```bash
+python Core-Agent/agent_trace_validator.py path/to/trace.jsonl
+python -m unittest Core-Agent/test_agent_trace_validator.py -v
+```
+
+The command exits with `0` for a valid trace, `1` for validation findings, and
+`2` when the input cannot be read.
+
 ## 提交前检查
 
 本目录提供一个仅依赖 Python 标准库的范围检查器，用于确认当前分支、暂存区、
