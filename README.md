@@ -276,7 +276,7 @@ services/api/.venv/bin/python scripts/smoke_test.py
 <p align="center">
   <a href="https://github.com/limouren2000/YYGlobal/graphs/contributors">
     <img
-      src="https://contrib.rocks/image?repo=limouren2000/YYGlobal&max=100&columns=12&updated=20260813"
+      src="https://contrib.rocks/image?repo=limouren2000/YYGlobal&max=100&columns=12&t=202608130930"
       alt="Contributors"
     />
   </a>
