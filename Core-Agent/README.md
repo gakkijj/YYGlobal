@@ -17,6 +17,38 @@ The command exits with `0` when all contracts pass, `1` when contract issues are
 found, and `2` when the repository cannot be inspected. JSON output is suitable
 for CI or other automation.
 
+## Tool argument validation
+
+`tool_arguments_validator.py` validates model-generated tool arguments with the
+complete JSON Schema Draft 2020-12 implementation provided by `jsonschema`. It
+checks nested objects and arrays, enums, numeric/string limits, required fields,
+and additional-property rules instead of relying
+on shallow top-level type checks.
+
+Run it in the API development environment, where `jsonschema` is already a
+declared dependency:
+
+```bash
+services/api/.venv/bin/python Core-Agent/tool_arguments_validator.py \
+  --schema path/to/tool.schema.json \
+  --arguments path/to/arguments.json
+```
+
+Use inline arguments and JSON output in automation:
+
+```bash
+services/api/.venv/bin/python Core-Agent/tool_arguments_validator.py \
+  --schema path/to/tool.schema.json \
+  --arguments-json '{"program_ids":["program-1"]}' \
+  --json
+```
+
+Exit codes are `0` for valid arguments, `1` for schema violations, and `2` for
+an invalid schema or unreadable JSON input. Python callers can import
+`validate_tool_arguments` for structured issues or
+`require_valid_tool_arguments` for an exception-based gate.
+=======
+=======
 ## 提交前检查
 
 本目录提供一个仅依赖 Python 标准库的范围检查器，用于确认当前分支、暂存区、
