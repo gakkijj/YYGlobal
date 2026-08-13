@@ -48,6 +48,7 @@ an invalid schema or unreadable JSON input. Python callers can import
 `validate_tool_arguments` for structured issues or
 `require_valid_tool_arguments` for an exception-based gate.
 =======
+=======
 ## 提交前检查
 
 本目录提供一个仅依赖 Python 标准库的范围检查器，用于确认当前分支、暂存区、
