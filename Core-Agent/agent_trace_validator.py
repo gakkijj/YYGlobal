@@ -67,7 +67,9 @@ def load_jsonl(path: Path) -> tuple[list[tuple[int, dict[str, Any]]], list[str],
     errors: list[str] = []
     warnings: list[str] = []
 
-    with path.open(encoding="utf-8") as trace_file:
+    # ``utf-8-sig`` accepts regular UTF-8 and strips an optional BOM. Trace
+    # exports from spreadsheet and Windows tooling commonly include one.
+    with path.open(encoding="utf-8-sig") as trace_file:
         for line_number, raw_line in enumerate(trace_file, start=1):
             if not raw_line.strip():
                 continue
