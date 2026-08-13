@@ -63,6 +63,28 @@ python -m unittest Core-Agent/test_agent_trace_validator.py -v
 The command exits with `0` for a valid trace, `1` for validation findings, and
 `2` when the input cannot be read.
 
+## Official evidence bundle audit
+
+`evidence_bundle_auditor.py` checks an exported program-research evidence
+bundle before an Agent cites it. It validates HTTPS official sources, source
+status and freshness, evidence-to-source references, quotes, confidence values,
+and coverage for critical fields. By default, both `deadline` and `materials`
+must have valid evidence from a verified official source.
+
+```bash
+python Core-Agent/evidence_bundle_auditor.py evidence.json
+python Core-Agent/evidence_bundle_auditor.py evidence.json \
+  --required-fields deadline,materials,tuition \
+  --max-age-days 60 \
+  --as-of 2026-08-13 \
+  --json
+python -m unittest Core-Agent/test_evidence_bundle_auditor.py -v
+```
+
+Warnings such as stale sources do not fail the audit. Contract errors or
+missing verified evidence exit with `1`; unreadable or invalid JSON exits with
+`2`.
+
 ## 提交前检查
 
 本目录提供一个仅依赖 Python 标准库的范围检查器，用于确认当前分支、暂存区、
