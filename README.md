@@ -242,7 +242,7 @@ services/api/.venv/bin/python scripts/smoke_test.py
 - CV / PS 只使用学生确认的真实经历，禁止补造课程、奖项和量化结果。
 - 项目材料和生成稿按项目、类型、版本独立管理。
 - 提交申请、付款、发送邮件等外部写操作必须经过用户确认。
-- 默认 `AUTH_ENABLED=false`，适合单人本地或受信环境；公网多用户认证与租户隔离仍在建设中。
+- 默认 `AUTH_ENABLED=false`，适合单人本地或受信环境，公网多用户认证与租户隔离仍在建设中。
 
 ## 🗺️ Roadmap
 
